@@ -4,38 +4,52 @@
     <div class="container">
         <div class="row">
             <div class="col-8 m-auto">
-                <div class="card border rounded">
-                    <h4 class="card-title p-3">Registration Form</h4>
+                <div class="card rounded">
+                    <h4 class="card-title p-2">Registration Form</h4>
                     <div class="card-body">
                         <form action="{{ route('register.store') }}" method="post">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-lavel">Name</label>
-                                <input type="text" class="form-control" name="name" id="">
+                                <label for="name" class="form-label">Name</label>
+                                <input class="form-control @error('name') is-invalid @enderror" type="text"
+                                    name="name" id="">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-lavel">Email</label>
-                                <input type="text" class="form-control" name="email" id="">
+                                <label for="email" class="form-label">Email</label>
+                                <input class="form-control @error('email') is-invalid @enderror" type="email"
+                                    name="email" id="">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="phone" class="form-lavel">Phone</label>
-                                <input type="text" class="form-control" name="phone" id="">
+                                <label for="password" class="form-label">Password</label>
+                                <input class="form-control @error('password') is-invalid @enderror" type="password"
+                                    name="password" id="">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-lavel">Password</label>
-                                <input type="text" class="form-control" name="password" id="">
+                                <label for="name" class="form-label">Confirm Password</label>
+                                <input class="form-control" type="password" name="password_confirmation" id="">
                             </div>
                             <div class="mb-3">
-                                <label for="name" class="form-lavel">Confirm Password</label>
-                                <input type="text" class="form-control" name="password_confirmation" id="">
+                                <button type="submit" class="btn btn-primary">Register</button>
                             </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-info">Register</button>
-                            </div>
+
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
